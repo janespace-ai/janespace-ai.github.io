@@ -33,19 +33,13 @@
     body { background-color: #0D0F17; color: #F0F0F5; }
     .screenshot-shadow {
       filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
-      transform: rotate(2deg);
     }
     .step-screenshot {
-      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));
-    }
-    .arch-diagram {
-      font-family: "SF Mono", "Fira Code", monospace;
-      font-size: 0.8rem;
-      line-height: 1.8;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
     }
     @keyframes float {
-      0%, 100% { transform: rotate(2deg) translateY(0px); }
-      50% { transform: rotate(2deg) translateY(-8px); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
     .float-anim { animation: float 4s ease-in-out infinite; }
   </style>
@@ -56,8 +50,8 @@
   <nav class="sticky top-0 z-50 border-b border-border" style="background-color: rgba(13,15,23,0.95); backdrop-filter: blur(12px);">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background-color: #6D6BF8;">
-          <img src="/assets/paw-icon.png" alt="Claw Wallet" style="width:28px;height:28px;object-fit:contain;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background-color: #6D6BF8;">
+          <img src="/assets/paw-icon.png" alt="Claw Wallet" style="width:34px;height:34px;object-fit:contain;">
         </div>
         <span class="font-semibold text-text-primary text-lg">Claw Wallet</span>
       </div>
@@ -79,7 +73,7 @@
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6 border border-border" style="background-color: #161824; color: #8B8BA7;">
           <span style="color: #6D6BF8;">✦</span> AI × Web3
         </div>
-        <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6" style="color: #F0F0F5;">
+        <h1 class="text-4xl lg:text-5xl font-bold mb-8" style="color: #F0F0F5; line-height: 1.3;">
           Give Your AI Agent a<br>
           <span style="color: #6D6BF8;">Real Crypto Wallet</span>
         </h1>
@@ -117,20 +111,20 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
         <!-- Step 1 -->
-        <div class="rounded-2xl p-6 border border-border flex flex-col gap-4" style="background-color: #161824;">
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">1</span>
-            <span class="text-lg">⬇️</span>
+        <div class="rounded-2xl border border-border flex flex-col overflow-hidden" style="background-color: #161824;">
+          <div class="p-6 flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">1</span>
+              <span class="text-lg">⬇️</span>
+            </div>
+            <h3 class="font-semibold text-base" style="color: #F0F0F5;">Install Desktop App</h3>
+            <p class="text-sm leading-relaxed" style="color: #8B8BA7;">Download and install the Claw Wallet desktop app. Your private keys will be stored here, never shared with the AI.</p>
+            <!-- TODO: add GitHub Releases URL -->
+            <a href="#" class="inline-flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-80" style="color: #6D6BF8;">
+              Download →
+            </a>
           </div>
-          <h3 class="font-semibold text-base" style="color: #F0F0F5;">Install Desktop App</h3>
-          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">Download and install the Claw Wallet desktop app. Your private keys will be stored here, never shared with the AI.</p>
-          <!-- TODO: add GitHub Releases URL -->
-          <a href="#" class="inline-flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-80" style="color: #6D6BF8;">
-            Download →
-          </a>
-          <div class="mt-4">
-            <img src="/assets/screenshots/welcome-dark.png" alt="Welcome screen" class="step-screenshot rounded-xl" style="width:100%;display:block;">
-          </div>
+          <img src="/assets/screenshots/welcome-dark.png" alt="Welcome screen" class="step-screenshot" style="width:100%;display:block;">
         </div>
 
         <!-- Step 2 -->
@@ -147,29 +141,29 @@
         </div>
 
         <!-- Step 3 -->
-        <div class="rounded-2xl p-6 border border-border flex flex-col gap-4" style="background-color: #161824;">
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">3</span>
-            <span class="text-lg">🔗</span>
+        <div class="rounded-2xl border border-border flex flex-col overflow-hidden" style="background-color: #161824;">
+          <div class="p-6 flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">3</span>
+              <span class="text-lg">🔗</span>
+            </div>
+            <h3 class="font-semibold text-base" style="color: #F0F0F5;">Generate Pairing Code</h3>
+            <p class="text-sm leading-relaxed" style="color: #8B8BA7;">In the desktop app, tap Pair → Generate Code. Share the 8-character code with your agent to link them together.</p>
           </div>
-          <h3 class="font-semibold text-base" style="color: #F0F0F5;">Generate Pairing Code</h3>
-          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">In the desktop app, tap Pair → Generate Code. Share the 8-character code with your agent to link them together.</p>
-          <div class="mt-4">
-            <img src="/assets/screenshots/pair-code-dark.png" alt="Pairing code screen" class="step-screenshot rounded-xl" style="width:100%;display:block;">
-          </div>
+          <img src="/assets/screenshots/pair-code-dark.png" alt="Pairing code screen" class="step-screenshot" style="width:100%;display:block;">
         </div>
 
         <!-- Step 4 -->
-        <div class="rounded-2xl p-6 border border-border flex flex-col gap-4" style="background-color: #161824;">
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">4</span>
-            <span class="text-lg">✨</span>
+        <div class="rounded-2xl border border-border flex flex-col overflow-hidden" style="background-color: #161824;">
+          <div class="p-6 flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">4</span>
+              <span class="text-lg">✨</span>
+            </div>
+            <h3 class="font-semibold text-base" style="color: #F0F0F5;">Start Using</h3>
+            <p class="text-sm leading-relaxed" style="color: #8B8BA7;">Ask your agent to send tokens, swap on Uniswap, or interact with any DeFi protocol. You approve every transaction on desktop.</p>
           </div>
-          <h3 class="font-semibold text-base" style="color: #F0F0F5;">Start Using</h3>
-          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">Ask your agent to send tokens, swap on Uniswap, or interact with any DeFi protocol. You approve every transaction on desktop.</p>
-          <div class="mt-4">
-            <img src="/assets/screenshots/approve-dark.png" alt="Transaction approval" class="step-screenshot rounded-xl" style="width:100%;display:block;">
-          </div>
+          <img src="/assets/screenshots/approve-dark.png" alt="Transaction approval" class="step-screenshot" style="width:100%;display:block;">
         </div>
 
       </div>

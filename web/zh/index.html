@@ -33,19 +33,13 @@
     body { background-color: #0D0F17; color: #F0F0F5; }
     .screenshot-shadow {
       filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
-      transform: rotate(2deg);
     }
     .step-screenshot {
-      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));
-    }
-    .arch-diagram {
-      font-family: "SF Mono", "Fira Code", monospace;
-      font-size: 0.8rem;
-      line-height: 1.8;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
     }
     @keyframes float {
-      0%, 100% { transform: rotate(2deg) translateY(0px); }
-      50% { transform: rotate(2deg) translateY(-8px); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
     .float-anim { animation: float 4s ease-in-out infinite; }
   </style>
@@ -56,8 +50,8 @@
   <nav class="sticky top-0 z-50 border-b border-border" style="background-color: rgba(13,15,23,0.95); backdrop-filter: blur(12px);">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background-color: #6D6BF8;">
-          <img src="/assets/paw-icon.png" alt="Claw Wallet" style="width:28px;height:28px;object-fit:contain;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background-color: #6D6BF8;">
+          <img src="/assets/paw-icon.png" alt="Claw Wallet" style="width:34px;height:34px;object-fit:contain;">
         </div>
         <span class="font-semibold text-text-primary text-lg">Claw Wallet</span>
       </div>
@@ -79,7 +73,7 @@
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6 border border-border" style="background-color: #161824; color: #8B8BA7;">
           <span style="color: #6D6BF8;">✦</span> AI × Web3
         </div>
-        <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6" style="color: #F0F0F5;">
+        <h1 class="text-4xl lg:text-5xl font-bold mb-8" style="color: #F0F0F5; line-height: 1.3;">
           让你的 AI Agent<br>
           <span style="color: #6D6BF8;">拥有真正的加密钱包</span>
         </h1>
@@ -116,20 +110,20 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
         <!-- Step 1 -->
-        <div class="rounded-2xl p-6 border border-border flex flex-col gap-4" style="background-color: #161824;">
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">1</span>
-            <span class="text-lg">⬇️</span>
+        <div class="rounded-2xl border border-border flex flex-col overflow-hidden" style="background-color: #161824;">
+          <div class="p-6 flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">1</span>
+              <span class="text-lg">⬇️</span>
+            </div>
+            <h3 class="font-semibold text-base" style="color: #F0F0F5;">安装桌面应用</h3>
+            <p class="text-sm leading-relaxed" style="color: #8B8BA7;">下载并安装 Claw Wallet 桌面应用。你的私钥将存储在这里，不会与 AI 共享。</p>
+            <!-- TODO: add GitHub Releases URL -->
+            <a href="#" class="inline-flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-80" style="color: #6D6BF8;">
+              立即下载 →
+            </a>
           </div>
-          <h3 class="font-semibold text-base" style="color: #F0F0F5;">安装桌面应用</h3>
-          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">下载并安装 Claw Wallet 桌面应用。你的私钥将存储在这里，不会与 AI 共享。</p>
-          <!-- TODO: add GitHub Releases URL -->
-          <a href="#" class="inline-flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-80" style="color: #6D6BF8;">
-            立即下载 →
-          </a>
-          <div class="mt-4">
-            <img src="/assets/screenshots/welcome-dark.png" alt="欢迎界面" class="step-screenshot rounded-xl" style="width:100%;display:block;">
-          </div>
+          <img src="/assets/screenshots/welcome-dark.png" alt="欢迎界面" class="step-screenshot" style="width:100%;display:block;">
         </div>
 
         <!-- Step 2 -->
@@ -146,29 +140,29 @@
         </div>
 
         <!-- Step 3 -->
-        <div class="rounded-2xl p-6 border border-border flex flex-col gap-4" style="background-color: #161824;">
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">3</span>
-            <span class="text-lg">🔗</span>
+        <div class="rounded-2xl border border-border flex flex-col overflow-hidden" style="background-color: #161824;">
+          <div class="p-6 flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">3</span>
+              <span class="text-lg">🔗</span>
+            </div>
+            <h3 class="font-semibold text-base" style="color: #F0F0F5;">生成配对码</h3>
+            <p class="text-sm leading-relaxed" style="color: #8B8BA7;">在桌面应用中点击「配对」→「生成配对码」，将 8 位配对码发送给你的 Agent 即可完成配对。</p>
           </div>
-          <h3 class="font-semibold text-base" style="color: #F0F0F5;">生成配对码</h3>
-          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">在桌面应用中点击「配对」→「生成配对码」，将 8 位配对码发送给你的 Agent 即可完成配对。</p>
-          <div class="mt-4">
-            <img src="/assets/screenshots/pair-code-dark.png" alt="配对码界面" class="step-screenshot rounded-xl" style="width:100%;display:block;">
-          </div>
+          <img src="/assets/screenshots/pair-code-dark.png" alt="配对码界面" class="step-screenshot" style="width:100%;display:block;">
         </div>
 
         <!-- Step 4 -->
-        <div class="rounded-2xl p-6 border border-border flex flex-col gap-4" style="background-color: #161824;">
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">4</span>
-            <span class="text-lg">✨</span>
+        <div class="rounded-2xl border border-border flex flex-col overflow-hidden" style="background-color: #161824;">
+          <div class="p-6 flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">4</span>
+              <span class="text-lg">✨</span>
+            </div>
+            <h3 class="font-semibold text-base" style="color: #F0F0F5;">开始使用</h3>
+            <p class="text-sm leading-relaxed" style="color: #8B8BA7;">让 Agent 转账、在 Uniswap 兑换，或与任何 DeFi 协议交互。每笔交易都需要你在桌面端审批。</p>
           </div>
-          <h3 class="font-semibold text-base" style="color: #F0F0F5;">开始使用</h3>
-          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">让 Agent 转账、在 Uniswap 兑换，或与任何 DeFi 协议交互。每笔交易都需要你在桌面端审批。</p>
-          <div class="mt-4">
-            <img src="/assets/screenshots/approve-dark.png" alt="交易审批" class="step-screenshot rounded-xl" style="width:100%;display:block;">
-          </div>
+          <img src="/assets/screenshots/approve-dark.png" alt="交易审批" class="step-screenshot" style="width:100%;display:block;">
         </div>
 
       </div>
