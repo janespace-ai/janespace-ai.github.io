@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claw Wallet — AI Agent 加密钱包</title>
+  <meta name="description" content="让你的 AI Agent 拥有真正的加密钱包。转账、Uniswap 兑换、DeFi 交互 — 全部通过自然语言完成。私钥永远不离开你的设备。">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0D0F17',
+            card: '#161824',
+            border: '#2A2D40',
+            accent: '#6D6BF8',
+            'accent-hover': '#5856d6',
+            'text-primary': '#F0F0F5',
+            'text-secondary': '#8B8BA7',
+            'code-bg': '#0F111A',
+            'code-text': '#C4B5FD',
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"PingFang SC"', '"Hiragino Sans GB"', '"Microsoft YaHei"', 'sans-serif'],
+            mono: ['"SF Mono"', '"Fira Code"', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0D0F17; color: #F0F0F5; }
+    .screenshot-shadow {
+      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+      transform: rotate(2deg);
+    }
+    .step-screenshot {
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));
+    }
+    .arch-diagram {
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 0.8rem;
+      line-height: 1.8;
+    }
+    @keyframes float {
+      0%, 100% { transform: rotate(2deg) translateY(0px); }
+      50% { transform: rotate(2deg) translateY(-8px); }
+    }
+    .float-anim { animation: float 4s ease-in-out infinite; }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- 导航栏 -->
+  <nav class="sticky top-0 z-50 border-b border-border" style="background-color: rgba(13,15,23,0.95); backdrop-filter: blur(12px);">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-lg" style="background-color: #6D6BF8;">🐾</div>
+        <span class="font-semibold text-text-primary text-lg">Claw Wallet</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/janespace-ai/claw-wallet" target="_blank" class="text-text-secondary hover:text-text-primary transition-colors text-sm">GitHub</a>
+        <div class="flex items-center gap-1 text-sm">
+          <a href="/web/en/" class="text-text-secondary hover:text-text-primary transition-colors">EN</a>
+          <span class="text-border">|</span>
+          <span class="text-accent font-medium">中文</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-20 pb-24">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6 border border-border" style="background-color: #161824; color: #8B8BA7;">
+          <span style="color: #6D6BF8;">✦</span> AI × Web3
+        </div>
+        <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6" style="color: #F0F0F5;">
+          让你的 AI Agent<br>
+          <span style="color: #6D6BF8;">拥有真正的加密钱包</span>
+        </h1>
+        <p class="text-lg mb-8 leading-relaxed" style="color: #8B8BA7;">
+          转账、Uniswap 兑换、DeFi 交互 — 全部通过自然语言完成。<br>
+          私钥永远不离开你的设备。
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <!-- TODO: add GitHub Releases URL -->
+          <a href="#" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-all hover:opacity-90 active:scale-95" style="background-color: #6D6BF8;">
+            下载桌面应用
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          </a>
+          <a href="https://github.com/janespace-ai/claw-wallet" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all hover:bg-border border border-border" style="color: #F0F0F5;">
+            查看 GitHub
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center lg:justify-end">
+        <img src="/assets/screenshots/home-dark.png" alt="Claw Wallet 主页"
+             class="float-anim screenshot-shadow" style="width: 280px; border-radius: 20px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用步骤 -->
+  <section class="py-20 border-t border-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-bold mb-3" style="color: #F0F0F5;">几分钟快速上手</h2>
+        <p style="color: #8B8BA7;">四步完成配置，让你的 AI Agent 拥有真正的链上钱包。</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Step 1 -->
+        <div class="rounded-2xl p-6 border border-border flex flex-col gap-4" style="background-color: #161824;">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">1</span>
+            <span class="text-lg">⬇️</span>
+          </div>
+          <h3 class="font-semibold text-base" style="color: #F0F0F5;">安装桌面应用</h3>
+          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">下载并安装 Claw Wallet 桌面应用。你的私钥将存储在这里，不会与 AI 共享。</p>
+          <!-- TODO: add GitHub Releases URL -->
+          <a href="#" class="mt-auto inline-flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-80" style="color: #6D6BF8;">
+            立即下载 →
+          </a>
+          <img src="/assets/screenshots/welcome-dark.png" alt="欢迎界面" class="step-screenshot w-full rounded-xl mt-2">
+        </div>
+
+        <!-- Step 2 -->
+        <div class="rounded-2xl p-6 border border-border flex flex-col gap-4" style="background-color: #161824;">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">2</span>
+            <span class="text-lg">🤖</span>
+          </div>
+          <h3 class="font-semibold text-base" style="color: #F0F0F5;">安装 Skill</h3>
+          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">用一条命令为 AI Agent 添加 Claw Wallet 能力。支持 Claude Code、OpenClaw、Cursor、Cline。</p>
+          <div class="rounded-lg px-4 py-3 text-xs font-mono overflow-x-auto" style="background-color: #0F111A; color: #C4B5FD;">
+            npx skills add janespace-ai/claw-wallet
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="rounded-2xl p-6 border border-border flex flex-col gap-4" style="background-color: #161824;">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">3</span>
+            <span class="text-lg">🔗</span>
+          </div>
+          <h3 class="font-semibold text-base" style="color: #F0F0F5;">生成配对码</h3>
+          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">在桌面应用中点击「配对」→「生成配对码」，将 8 位配对码发送给你的 Agent 即可完成配对。</p>
+          <img src="/assets/screenshots/pair-code-dark.png" alt="配对码界面" class="step-screenshot w-full rounded-xl mt-auto">
+        </div>
+
+        <!-- Step 4 -->
+        <div class="rounded-2xl p-6 border border-border flex flex-col gap-4" style="background-color: #161824;">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center" style="background-color: #6D6BF8; color: white;">4</span>
+            <span class="text-lg">✨</span>
+          </div>
+          <h3 class="font-semibold text-base" style="color: #F0F0F5;">开始使用</h3>
+          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">让 Agent 转账、在 Uniswap 兑换，或与任何 DeFi 协议交互。每笔交易都需要你在桌面端审批。</p>
+          <img src="/assets/screenshots/tx-approval-dark.png" alt="交易审批" class="step-screenshot w-full rounded-xl mt-auto">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 功能特性 -->
+  <section class="py-20 border-t border-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-bold mb-3" style="color: #F0F0F5;">Agent 所需的一切能力</h2>
+        <p style="color: #8B8BA7;">强大的链上操作能力，安全从设计之初就已内建。</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6 border border-border" style="background-color: #161824;">
+          <div class="text-2xl mb-3">🔐</div>
+          <h3 class="font-semibold mb-2" style="color: #F0F0F5;">私钥本地保管</h3>
+          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">私钥仅存储在桌面应用中。AI 模型永远无法访问 — 哪怕一次。</p>
+        </div>
+        <div class="rounded-2xl p-6 border border-border" style="background-color: #161824;">
+          <div class="text-2xl mb-3">💸</div>
+          <h3 class="font-semibold mb-2" style="color: #F0F0F5;">转账</h3>
+          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">支持 ETH、USDC 等代币，覆盖以太坊、Base、Arbitrum、Polygon 等多条链。</p>
+        </div>
+        <div class="rounded-2xl p-6 border border-border" style="background-color: #161824;">
+          <div class="text-2xl mb-3">🔄</div>
+          <h3 class="font-semibold mb-2" style="color: #F0F0F5;">DeFi 兑换</h3>
+          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">通过自然语言在 Uniswap 兑换、向 Aave 存款、质押代币等。</p>
+        </div>
+        <div class="rounded-2xl p-6 border border-border" style="background-color: #161824;">
+          <div class="text-2xl mb-3">✍️</div>
+          <h3 class="font-semibold mb-2" style="color: #F0F0F5;">EIP-712 签名</h3>
+          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">为 Hyperliquid 下单、Permit2 授权、CoW Protocol 等场景签署链下消息。</p>
+        </div>
+        <div class="rounded-2xl p-6 border border-border" style="background-color: #161824;">
+          <div class="text-2xl mb-3">👀</div>
+          <h3 class="font-semibold mb-2" style="color: #F0F0F5;">每笔交易你来审批</h3>
+          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">每次签名前桌面应用都会弹出确认界面。你始终掌握控制权。</p>
+        </div>
+        <div class="rounded-2xl p-6 border border-border" style="background-color: #161824;">
+          <div class="text-2xl mb-3">🌐</div>
+          <h3 class="font-semibold mb-2" style="color: #F0F0F5;">多链支持</h3>
+          <p class="text-sm leading-relaxed" style="color: #8B8BA7;">以太坊、Base、Arbitrum、Polygon 等 — 一个钱包，覆盖所有链。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 安全架构 -->
+  <section class="py-20 border-t border-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="rounded-2xl p-10 lg:p-14 border border-border" style="background-color: #161824;">
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="text-3xl mb-4">🔒</div>
+          <h2 class="text-3xl font-bold mb-4" style="color: #F0F0F5;">安全优先的架构设计</h2>
+          <p class="text-lg mb-10" style="color: #8B8BA7;">
+            三组件隔离架构，端对端加密。即便 AI 模型完全被攻破，攻击者也无法获得任何密钥。
+          </p>
+          <div class="rounded-xl p-6 mb-8 text-left overflow-x-auto" style="background-color: #0F111A;">
+            <pre class="arch-diagram text-center" style="color: #C4B5FD;">
+AI Agent        中继服务器          桌面钱包
+（无密钥）  ←──E2EE──►  （密文转发）  ←──E2EE──►  （持有所有密钥）
+
+X25519 + AES-256-GCM 端对端加密
+中继服务器只转发密文，无法读取或篡改任何消息</pre>
+          </div>
+          <div class="grid sm:grid-cols-3 gap-6 text-left">
+            <div>
+              <div class="text-sm font-semibold mb-1" style="color: #6D6BF8;">AI Agent</div>
+              <p class="text-sm" style="color: #8B8BA7;">只能看到钱包地址和交易哈希。不持有任何密钥。</p>
+            </div>
+            <div>
+              <div class="text-sm font-semibold mb-1" style="color: #6D6BF8;">中继服务器</div>
+              <p class="text-sm" style="color: #8B8BA7;">无状态 WebSocket 转发器。只收到密文，无法读取或修改消息内容。</p>
+            </div>
+            <div>
+              <div class="text-sm font-semibold mb-1" style="color: #6D6BF8;">桌面钱包</div>
+              <p class="text-sm" style="color: #8B8BA7;">所有密钥存储于此，本地签名。每次操作都展示审批界面。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-border">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-md flex items-center justify-center text-sm" style="background-color: #6D6BF8;">🐾</div>
+        <span class="text-sm" style="color: #8B8BA7;">Claw Wallet · MIT 许可证 · 为 OpenClaw AI Agent 而生</span>
+      </div>
+      <div class="flex items-center gap-5 text-sm">
+        <a href="https://github.com/janespace-ai/claw-wallet" target="_blank" class="transition-colors hover:text-text-primary" style="color: #8B8BA7;">GitHub</a>
+        <span style="color: #2A2D40;">|</span>
+        <a href="/web/en/" class="transition-colors hover:text-text-primary" style="color: #8B8BA7;">EN</a>
+        <span class="text-accent font-medium">中文</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
