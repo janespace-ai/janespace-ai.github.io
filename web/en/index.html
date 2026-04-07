@@ -56,8 +56,8 @@
   <nav class="sticky top-0 z-50 border-b border-border" style="background-color: rgba(13,15,23,0.95); backdrop-filter: blur(12px);">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background-color: #6D6BF8;">
-          <img src="/assets/paw-icon.png" alt="Claw Wallet" style="width:26px;height:26px;object-fit:contain;">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background-color: #6D6BF8;">
+          <img src="/assets/paw-icon.png" alt="Claw Wallet" style="width:28px;height:28px;object-fit:contain;">
         </div>
         <span class="font-semibold text-text-primary text-lg">Claw Wallet</span>
       </div>
@@ -128,8 +128,8 @@
           <a href="#" class="inline-flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-80" style="color: #6D6BF8;">
             Download →
           </a>
-          <div class="flex justify-center mt-4">
-            <img src="/assets/screenshots/welcome-dark.png" alt="Welcome screen" class="step-screenshot rounded-xl" style="width:180px;">
+          <div class="mt-4">
+            <img src="/assets/screenshots/welcome-dark.png" alt="Welcome screen" class="step-screenshot rounded-xl" style="width:100%;display:block;">
           </div>
         </div>
 
@@ -154,8 +154,8 @@
           </div>
           <h3 class="font-semibold text-base" style="color: #F0F0F5;">Generate Pairing Code</h3>
           <p class="text-sm leading-relaxed" style="color: #8B8BA7;">In the desktop app, tap Pair → Generate Code. Share the 8-character code with your agent to link them together.</p>
-          <div class="flex justify-center mt-4">
-            <img src="/assets/screenshots/pair-code-dark.png" alt="Pairing code screen" class="step-screenshot rounded-xl" style="width:180px;">
+          <div class="mt-4">
+            <img src="/assets/screenshots/pair-code-dark.png" alt="Pairing code screen" class="step-screenshot rounded-xl" style="width:100%;display:block;">
           </div>
         </div>
 
@@ -167,8 +167,8 @@
           </div>
           <h3 class="font-semibold text-base" style="color: #F0F0F5;">Start Using</h3>
           <p class="text-sm leading-relaxed" style="color: #8B8BA7;">Ask your agent to send tokens, swap on Uniswap, or interact with any DeFi protocol. You approve every transaction on desktop.</p>
-          <div class="flex justify-center mt-4">
-            <img src="/assets/screenshots/approve-dark.png" alt="Transaction approval" class="step-screenshot rounded-xl" style="width:180px;">
+          <div class="mt-4">
+            <img src="/assets/screenshots/approve-dark.png" alt="Transaction approval" class="step-screenshot rounded-xl" style="width:100%;display:block;">
           </div>
         </div>
 
@@ -221,36 +221,73 @@
   <!-- Security -->
   <section class="py-20 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="rounded-2xl p-10 lg:p-14 border border-border" style="background-color: #161824;">
-        <div class="max-w-3xl mx-auto text-center">
-          <div class="text-3xl mb-4">🔒</div>
-          <h2 class="text-3xl font-bold mb-4" style="color: #F0F0F5;">Security-first architecture</h2>
-          <p class="text-lg mb-10" style="color: #8B8BA7;">
-            Three isolated components. End-to-end encrypted. Even if the AI model is fully compromised, the attacker gains zero key material.
-          </p>
-          <div class="rounded-xl p-6 mb-8 text-left overflow-x-auto" style="background-color: #0F111A;">
-            <pre class="arch-diagram text-center" style="color: #C4B5FD;">
-AI Agent          Relay Server        Desktop Wallet
-(zero keys)  ←──E2EE──►  (ciphertext)  ←──E2EE──►  (holds all keys)
-
-X25519 + AES-256-GCM end-to-end encryption
-The relay only forwards ciphertext — it can never read messages</pre>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4" style="color: #F0F0F5;">End-to-End Encrypted</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #8B8BA7;">
+          Three-component design. Even if the AI model is fully compromised, the attacker gains zero key material.
+        </p>
+      </div>
+      <!-- Architecture cards -->
+      <div class="flex flex-col lg:flex-row items-stretch gap-0 mb-6">
+        <!-- AI Agent -->
+        <div class="flex-1 rounded-2xl lg:rounded-r-none p-8 border border-border" style="background-color: #161824;">
+          <div class="mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6D6BF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
           </div>
-          <div class="grid sm:grid-cols-3 gap-6 text-left">
-            <div>
-              <div class="text-sm font-semibold mb-1" style="color: #6D6BF8;">AI Agent</div>
-              <p class="text-sm" style="color: #8B8BA7;">Sees wallet addresses and transaction hashes only. Zero secrets.</p>
-            </div>
-            <div>
-              <div class="text-sm font-semibold mb-1" style="color: #6D6BF8;">Relay Server</div>
-              <p class="text-sm" style="color: #8B8BA7;">Stateless WebSocket forwarder. Receives only ciphertext, cannot read or modify messages.</p>
-            </div>
-            <div>
-              <div class="text-sm font-semibold mb-1" style="color: #6D6BF8;">Desktop Wallet</div>
-              <p class="text-sm" style="color: #8B8BA7;">All keys live here. Signs locally. Shows approval UI for every request.</p>
-            </div>
-          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: #F0F0F5;">AI Agent</h3>
+          <p class="text-sm mb-5 leading-relaxed" style="color: #8B8BA7;">Your Claude / OpenClaw / Cursor / Cline agent. Initiates requests but never touches keys.</p>
+          <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-full border" style="color: #FF6B6B; border-color: #FF6B6B; background: #1A1A2E;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>
+            Zero key access
+          </span>
         </div>
+        <!-- Arrow 1 -->
+        <div class="hidden lg:flex flex-col items-center justify-center w-20 border-t border-b border-border" style="background-color: #0F111A;">
+          <span class="text-xs font-bold mb-1" style="color: #6D6BF8; font-family: monospace;">E2EE</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6D6BF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="lg:hidden flex items-center justify-center gap-2 py-3 border-l border-r border-border" style="background-color: #0F111A;">
+          <span class="text-xs font-bold" style="color: #6D6BF8; font-family: monospace;">E2EE</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6D6BF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </div>
+        <!-- Relay Server -->
+        <div class="flex-1 rounded-none p-8 border-t border-b lg:border border-border" style="background-color: #161824;">
+          <div class="mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6D6BF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: #F0F0F5;">Relay Server</h3>
+          <p class="text-sm mb-5 leading-relaxed" style="color: #8B8BA7;">Routes encrypted messages between agent and wallet. Stateless, cannot read content.</p>
+          <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-full border" style="color: #8B8BA7; border-color: #8B8BA7; background: #1A1A2E;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+            Sees ciphertext only
+          </span>
+        </div>
+        <!-- Arrow 2 -->
+        <div class="hidden lg:flex flex-col items-center justify-center w-20 border-t border-b border-border" style="background-color: #0F111A;">
+          <span class="text-xs font-bold mb-1" style="color: #6D6BF8; font-family: monospace;">E2EE</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6D6BF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="lg:hidden flex items-center justify-center gap-2 py-3 border-l border-r border-border" style="background-color: #0F111A;">
+          <span class="text-xs font-bold" style="color: #6D6BF8; font-family: monospace;">E2EE</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6D6BF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </div>
+        <!-- Desktop Wallet -->
+        <div class="flex-1 rounded-2xl lg:rounded-l-none p-8 border border-border" style="background-color: #161824;">
+          <div class="mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: #F0F0F5;">Desktop Wallet</h3>
+          <p class="text-sm mb-5 leading-relaxed" style="color: #8B8BA7;">Your local app holds all keys, shows every approval, signs transactions locally.</p>
+          <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-full border" style="color: #34D399; border-color: #34D399; background: #0D2818;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Holds all keys
+          </span>
+        </div>
+      </div>
+      <!-- Guarantee banner -->
+      <div class="flex items-center gap-3 p-5 rounded-2xl border" style="background-color: #0D2818; border-color: #34D399;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span style="color: #34D399; font-size: 15px; font-weight: 500;">Even if the AI model is fully compromised, the attacker gains zero key material.</span>
       </div>
     </div>
   </section>
